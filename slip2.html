@@ -1,0 +1,28 @@
+<html>
+    
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+        <title>slip2</title>
+    </head>
+    <body>
+        <div ng-app="" ng-init="U=['BBA-(CA)','BCA(Science)','B.Sc.
+                                   (computer Science)'];P=['M.Sc.(Computer science)','M.Sc.(CA)','MCA'];">
+                                <b><p><i>Under Graduate Courses :</i></p></b>
+                                <ol type="i">
+                                    <li ng-repeat="x in U">
+                                        {{x}}
+                                    </li>
+                                    
+                                </ol>
+                                <b><p><i>Post Graduate Courses :</i></p></b>
+                                <ol type="i">
+                                    <li ng-repeat="x in P">
+                                        {{x}}
+                                    </li>
+                                
+                                </ol>
+
+        </div>
+    </body>
+</html>

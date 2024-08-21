@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="hotelApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Top Hotels in Pune</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+
+    <h1>Top Hotels in Pune</h1>
+
+    <div ng-controller="HotelsController">
+        <h2>List of Top Hotels in Pune</h2>
+
+        <ul>
+            <li ng-repeat="hotel in hotels">
+                <h3>{{ hotel.name }}</h3>
+                <p><strong>Address:</strong> {{ hotel.address }}</p>
+                <p><strong>Contact:</strong> {{ hotel.contact }}</p>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        angular.module('hotelApp', [])
+            .controller('HotelsController', function($scope) {
+                $scope.hotels = [
+                    { name: 'Hotel A', address: 'Address A, Pune', contact: '1234567890' },
+                    { name: 'Hotel B', address: 'Address B, Pune', contact: '0987654321' },
+                    { name: 'Hotel C', address: 'Address C, Pune', contact: '2345678901' },
+                    { name: 'Hotel D', address: 'Address D, Pune', contact: '9876543210' },
+                    { name: 'Hotel E', address: 'Address E, Pune', contact: '8765432109' }
+                    // Add more hotels as needed
+                ];
+            });
+    </script>
+
+</body>
+</html>

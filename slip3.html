@@ -1,0 +1,35 @@
+<html>
+    <head>
+       
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <title>Slip3</title>
+    </head>
+    <body>
+        <div style="text-align:center;" ng-app="" ng-init="details=[{rno:01,name:'shravani',percentage:'90%'},
+                                                                     {rno:02,name:'janhavi',percentage:'70%'},
+                                                                     {rno:03,name:'rahi',percentage:'80%'},
+                                                                     {rno:04,name:'suyash',percentage:'60%'},
+                                                                     {rno:05,name:'yash',percentage:'50%'},
+                                                                     {rno:06,name:'Janhavi',percentage:'65%'},
+                                                                     {rno:07,name:'Janhavi',percentage:'73%'},
+                                                                     {rno:08,name:'Janhavi',percentage:'71%'},
+                                                                     {rno:09,name:'Janhavi',percentage:'87%'},
+                                                                     {rno:10,name:'Janhavi',percentage:'59%'},]">
+                            <h1>Student details</h1>
+                            <table border="3" height="50%" width="50%" align="center">
+                                <tr>
+                                    <th>Roll no.</th>
+                                    <th>Student name</th>
+                                    <th>Percentage</th>
+                                </tr>
+                                <tr ng-repeat="x in details">
+                                    <td>{{x.rno}}</td>
+                                    <td>{{x.name}}</td>
+                                    <td>{{x.percentage}}</td>
+
+                                </tr>
+                            </table>
+
+        </div>
+    </body>
+</html>

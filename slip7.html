@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html ng-app="sybbaApp">
+<head>
+    <meta charset="UTF-8">
+    <title>SYBBA(CA) Syllabus</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        nav ul { list-style-type: none; padding: 0; margin: 0; background-color: #333; }
+        nav ul li { display: inline; margin-right: 10px; }
+        nav ul li a { color: white; text-decoration: none; }
+        nav ul li a:hover { text-decoration: underline; }
+        div[ng-view] { padding: 20px; }
+    </style>
+    <script>
+        var app = angular.module('sybbaApp', ['ngRoute']);
+
+        app.config(function($routeProvider) {
+            $routeProvider
+                .when('/home', {
+                    templateUrl: 'home.html',
+                    controller: 'MainController'
+                })
+                .when('/Python', {
+                    templateUrl: 'Python.html',
+                    controller: 'PythonController'
+                })
+                .when('/CPP', {
+                    templateUrl: 'CPP.html',
+                    controller: 'CPPController'
+                })
+                .when('/Big data', {
+                    templateUrl: 'Bigdata.html',
+                    controller: 'BigdataController'
+                })
+                .when('/OOP', {
+                    templateUrl: 'OOP.html',
+                    controller: 'OOPController'
+                })
+                .otherwise({
+                    redirectTo: '/home'
+                });
+        });
+
+        app.controller('MainController', function($scope) {
+            $scope.message = "Welcome to the SYBBA(CA) Syllabus Application!";
+        });
+
+        app.controller('PythonController', function($scope) {
+            $scope.syllabus1 = "Python is a high-level, interpreted programming language known for its clear and readable syntax.";
+            $scope.syllabus2 =  "It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.";
+            $scope.syllabus3 =  "Python is widely used in web development, data analysis, machine learning, and scripting.";
+            $scope.syllabus4 =  "It has a rich standard library and a strong community, making it highly versatile and accessible. Its cross-platform nature allows it to run on various operating systems seamlessly.";
+        });
+
+        app.controller('CPPController', function($scope) {
+            $scope.syllabus1 ="C++ is a high-performance, compiled programming language that supports object-oriented, procedural, and generic programming.";
+            $scope.syllabus2 ="It extends the C language with classes, inheritance, and polymorphism. C++ is widely used in system/software development, game programming, and performance-critical applications.";
+            $scope.syllabus3 ="It provides fine control over system resources and memory management.";
+            $scope.syllabus4 ="Its extensive standard library includes powerful features like the Standard Template Library (STL).";
+        });
+
+        app.controller('BigdataController', function($scope) {
+            $scope.syllabus1 ="Big Data refers to extremely large and complex datasets that traditional data processing tools cannot handle efficiently.";
+            $scope.syllabus2 ="It involves collecting, storing, and analyzing vast amounts of data to uncover patterns, trends, and insights.";
+            $scope.syllabus3 ="Big Data technologies, such as Hadoop and Spark, enable scalable storage and processing. ";
+            $scope.syllabus4 ="It is used across various industries for applications like predictive analytics, customer insights, and real-time decision-making. ";
+            $scope.syllabus5="Managing Big Data involves challenges related to volume, velocity, and variety.";
+        });  
+
+        app.controller('OOPController', function($scope) {
+            $scope.syllabus1 ="Object-Oriented Programming (OOP) is a programming paradigm based on the concept of objects, which can contain data (attributes) and code (methods).";
+            $scope.syllabus2 ="It emphasizes four core principles: encapsulation (bundling data and methods), inheritance (deriving new classes from existing ones), polymorphism (using a single interface to represent different underlying forms), and abstraction (hiding complex implementation details). ";
+            $scope.syllabus3 =" OOP promotes code reuse, modularity, and maintainability. Languages such as Java, C++, and Python support OOP. ";
+          
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="MainController">
+        <nav>
+            <ul>
+                <li><a href="#!/home">Home</a></li>
+                <li><a href="#!/Python">Python</a></li>
+                <li><a href="#!/CPP">CPP</a></li>
+                <li><a href="#!/Big data">Big data</a></li>
+                <li><a href="#!/OOP">OOP</a></li>
+            </ul>
+        </nav>
+        <div ng-view></div>
+    </div>
+
+    <script type="text/ng-template" id="home.html">
+        <h1>{{ message }}</h1>
+    </script>
+    
+    
+    <script type="text/ng-template" id="Python.html">
+        <img src="python.png"height="300" width="400">
+        <h1>Python</h1>
+        <p>{{ syllabus1 }}
+           {{ syllabus2 }}
+           {{ syllabus3 }}
+           {{ syllabus4 }}</p>
+    </script>
+
+    <script type="text/ng-template" id="CPP.html">
+        <img src="cpp.jpg"height="300" width="400">
+        <h1>CPP</h1>
+        <p>{{ syllabus1 }}
+           {{ syllabus2 }}
+           {{ syllabus3 }}
+           {{ syllabus4 }}</p>
+    </script>
+
+    <script type="text/ng-template" id="Bigdata.html">
+        <img src="big data.jpg"height="300" width="400">
+        <h1>Big data</h1>
+        <p>{{ syllabus1 }}
+           {{ syllabus2 }}
+           {{ syllabus3 }}
+           {{ syllabus4 }}
+           {{ syllabus5 }} </p>
+    </script>
+
+    <script type="text/ng-template" id="OOP.html">
+        <img src="opp.png" height="300" width="400">
+        <h1>OOP</h1>
+        <p>{{ syllabus1 }}
+           {{ syllabus2 }}
+           {{ syllabus3 }}</p>
+    </script>
+</body>
+</html>

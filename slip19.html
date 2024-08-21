@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="employeeApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Details</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('employeeApp', [])
+            .controller('EmployeeController', function($scope) {
+                $scope.employees = [
+                    { name: 'John Doe', address: 'Pune', salary: 50000 },
+                    { name: 'Jane Smith', address: 'Mumbai', salary: 60000 },
+                    { name: 'Raj Kumar', address: 'Pune', salary: 55000 },
+                    { name: 'Anita Singh', address: 'Delhi', salary: 65000 },
+                    { name: 'Rahul Dravid', address: 'Pune', salary: 70000 },
+                    { name: 'Sunita Patil', address: 'Pune', salary: 48000 }
+                    // Add more employees as needed
+                ];
+                $scope.sortBySalary = function(employee) {
+                    return employee.salary;
+                };
+            });
+    </script>
+</head>
+<body ng-controller="EmployeeController">
+
+    <h1>Employee Details</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employees | orderBy:sortBySalary">
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.address }}</td>
+                <td>{{ employee.salary }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

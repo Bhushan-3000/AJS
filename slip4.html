@@ -1,0 +1,47 @@
+<html>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+	<body bgcolor ="cadetblue">
+		<div ng-app="" ng-init="Bname=[
+		{ 
+		name:'SARASWAT COOPERATIVE BANK LIMITED',IFSC:0000066,
+		MICR:411088013,Address: ' KOTHRUD, PUNE.'
+		},{
+		name:'HSBC BANK',IFSC:411003,
+		MICR:411088023,Address:'SHIVAJI NAGAR PUNE'
+		},{
+		name:'BANK OF MAHARASHTRA',IFSC:0123970,
+		MICR:411014061,Address:'SUVARNA BAUG COLONY, KARVENAGAR, PUNE '
+		},{
+		name:'ICICI BANK LIMITED',IFSC:01206493,
+		MICR:411229026,Address:'PAUD RD., KOTHRUD, PUNE'
+		},{
+		name:'DENABANK',IFSC:0510744,
+		MICR:4110144234,Address:'SADASHIV PETH,TILAK ROAD,PUNE '
+		}
+		]">
+			<center>
+			 <table border="1"style="width:50%;color:white">  
+        
+        		 <h1><font color="black">Bank Details</font></h1>  
+        
+        		        <tr>  
+             			    <th>Srno </th>
+		                    <th>Name</th>  
+		                    <th>IFSC</th>  
+                		    <th>MICR</th>  
+		                    <th>Address</th>  
+             		       </tr>  
+             
+              		       <tr ng-repeat="x in Bname" >
+                     		<td>{{$index + 1}}</td>
+		                     <td>{{x.name}}</td>
+                		     <td>{{x.IFSC}}</td>
+		                     <td>{{x.MICR}}</td>
+                		     <td>{{x.Address}}</td>
+				</tr>
+			  </table>
+			  </center> 
+</div>
+</body>
+</html>

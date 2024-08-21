@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="studentApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Student</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('studentApp', [])
+            .controller('StudentController', function($scope) {
+                $scope.students = [
+                    { name: 'John Doe', address: 'Pune', age: 21 },
+                    { name: 'Jane Smith', address: 'Mumbai', age: 22 },
+                    { name: 'Raj Kumar', address: 'Pune', age: 23 },
+                    { name: 'Anita Singh', address: 'Delhi', age: 20 },
+                    { name: 'Rahul Dravid', address: 'Pune', age: 24 },
+                    { name: 'Sunita Patil', address: 'Pune', age: 21 }
+                    // Add more students as needed
+                ];
+                $scope.searchText = "";
+            });
+    </script>
+</head>
+<body ng-controller="StudentController">
+
+    <h1>Search Student</h1>
+
+    <input type="text" ng-model="searchText" placeholder="Search by name">
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="student in students | filter: { name: searchText }">
+                <td>{{ student.name }}</td>
+                <td>{{ student.address }}</td>
+                <td>{{ student.age }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

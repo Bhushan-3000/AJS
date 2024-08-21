@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="loginApp">
+<head>
+    <title>Login Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        .error { color: red; }
+        .valid { color: green; }
+    </style>
+</head>
+<body ng-controller="LoginController">
+
+    <h1>Login Form</h1>
+
+    <form name="loginForm" ng-submit="submitForm()" novalidate>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" ng-model="user.email" 
+                   required 
+                   ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/">
+            <span class="error" ng-show="loginForm.email.$error.required && loginForm.email.$touched">Email is required.</span>
+            <span class="error" ng-show="loginForm.email.$error.pattern && loginForm.email.$touched">Invalid email format.</span>
+        </div>
+        <br>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" ng-model="user.password" 
+                   required 
+                   ng-minlength="8">
+            <span class="error" ng-show="loginForm.password.$error.required && loginForm.password.$touched">Password is required.</span>
+            <span class="error" ng-show="loginForm.password.$error.minlength && loginForm.password.$touched">Password must be at least 8 characters long.</span>
+        </div>
+        <br>
+        <button type="submit" ng-disabled="loginForm.$invalid">Login</button>
+    </form>
+
+    <script>
+        angular.module('loginApp', [])
+            .controller('LoginController', function($scope) {
+                $scope.user = {};
+
+                $scope.submitForm = function() {
+                    if ($scope.loginForm.$valid) {
+                        alert('Form is valid and ready to be submitted!');
+                        // Process the login here
+                    } else {
+                        alert('Form is invalid. Please correct the errors and try again.');
+                    }
+                };
+            });
+    </script>
+
+</body>
+</html>

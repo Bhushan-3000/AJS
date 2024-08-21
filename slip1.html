@@ -1,0 +1,25 @@
+
+<html>
+<head>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+
+    </script>
+    <title>slip1</title>
+</head>
+<body>
+    <div ng-app="">
+<p>list of games</p>
+<div ng-init ="gamearray = ['Football','Wrestling','Boxing','tennis']">
+
+<button ng-click="game=gamearray" ng-model="game">click here</button>
+<ol type="i">
+    <li ng-repeat="x in game">
+        <div ng-bind="x">
+
+    </li>
+</ol>
+  </div>
+    </div>
+</body>
+</html>

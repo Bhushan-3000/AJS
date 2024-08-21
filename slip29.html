@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html ng-app="schoolApp">
+<head>
+    <title>Online School System</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        .error { color: red; }
+        .valid { color: green; }
+        form { margin-bottom: 20px; }
+    </style>
+</head>
+<body ng-controller="MainController">
+
+    <h1>Online School System</h1>
+
+    <!-- Student Registration Form -->
+    <div>
+        <h2>Register Student</h2>
+        <form name="studentForm" ng-submit="addStudent()" novalidate>
+            <div>
+                <label for="studentName">Name:</label>
+                <input type="text" id="studentName" name="studentName" ng-model="newStudent.name" required>
+                <span class="error" ng-show="studentForm.studentName.$error.required && studentForm.studentName.$touched">Name is required.</span>
+            </div>
+            <br>
+            <button type="submit" ng-disabled="studentForm.$invalid">Add Student</button>
+        </form>
+    </div>
+
+    <!-- Course Registration Form -->
+    <div>
+        <h2>Register Course</h2>
+        <form name="courseForm" ng-submit="addCourse()" novalidate>
+            <div>
+                <label for="courseName">Course Name:</label>
+                <input type="text" id="courseName" name="courseName" ng-model="newCourse.name" required>
+                <span class="error" ng-show="courseForm.courseName.$error.required && courseForm.courseName.$touched">Course name is required.</span>
+            </div>
+            <br>
+            <button type="submit" ng-disabled="courseForm.$invalid">Add Course</button>
+        </form>
+    </div>
+
+    <!-- Enrollment Form -->
+    <div>
+        <h2>Enroll Student</h2>
+        <form name="enrollmentForm" ng-submit="enrollStudent()" novalidate>
+            <div>
+                <label for="studentSelect">Select Student:</label>
+                <select id="studentSelect" name="studentSelect" ng-model="selectedStudent" ng-options="student.name for student in students" required>
+                    <option value="">-- Select Student --</option>
+                </select>
+                <span class="error" ng-show="enrollmentForm.studentSelect.$error.required && enrollmentForm.studentSelect.$touched">Student selection is required.</span>
+            </div>
+            <br>
+            <div>
+                <label for="courseSelect">Select Course:</label>
+                <select id="courseSelect" name="courseSelect" ng-model="selectedCourse" ng-options="course.name for course in courses" required>
+                    <option value="">-- Select Course --</option>
+                </select>
+                <span class="error" ng-show="enrollmentForm.courseSelect.$error.required && enrollmentForm.courseSelect.$touched">Course selection is required.</span>
+            </div>
+            <br>
+            <button type="submit" ng-disabled="enrollmentForm.$invalid">Enroll Student</button>
+        </form>
+    </div>
+
+    <!-- Display Lists -->
+    <div>
+        <h2>Students</h2>
+        <ul>
+            <li ng-repeat="student in students">{{ student.name }}</li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Courses</h2>
+        <ul>
+            <li ng-repeat="course in courses">{{ course.name }}</li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Enrollments</h2>
+        <ul>
+            <li ng-repeat="enrollment in enrollments">{{ enrollment.student.name }} enrolled in {{ enrollment.course.name }}</li>
+        </ul>
+    </div>
+
+    <script>
+        angular.module('schoolApp', [])
+            .controller('MainController', function($scope) {
+                $scope.students = [];
+                $scope.courses = [];
+                $scope.enrollments = [];
+
+                $scope.addStudent = function() {
+                    if ($scope.studentForm.$valid) {
+                        $scope.students.push({ name: $scope.newStudent.name });
+                        $scope.newStudent.name = '';
+                    }
+                };
+
+                $scope.addCourse = function() {
+                    if ($scope.courseForm.$valid) {
+                        $scope.courses.push({ name: $scope.newCourse.name });
+                        $scope.newCourse.name = '';
+                    }
+                };
+
+                $scope.enrollStudent = function() {
+                    if ($scope.enrollmentForm.$valid) {
+                        var student = $scope.selectedStudent;
+                        var course = $scope.selectedCourse;
+                        if (student && course) {
+                            $scope.enrollments.push({ student: student, course: course });
+                        }
+                    }
+                };
+            });
+    </script>
+
+</body>
+</html>
